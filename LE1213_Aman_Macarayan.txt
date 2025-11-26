@@ -1,0 +1,60 @@
+#include <stdio.h>
+
+int main(){
+    FILE *file;
+    int n, i;
+    char name [50];
+    char course [70];
+    int age;
+    
+    file = fopen("student_records.txt", "w");
+    
+    if (file == NULL){
+        printf("Error! Failed to open file.");
+        return 1;
+    }
+    
+    printf("Writing Student Database: \n");
+    printf("How many students do you want to record? ");
+    scanf("%d", &n);
+    getchar();
+    
+    for(i = 1; i <= n; i++) {
+    printf("\nStudent %d\n", i);  
+    
+    printf("Enter name: ");
+    fgets(name, sizeof(name), stdin);
+    
+    printf("Enter age: ");
+    scanf("%d", &age);
+    getchar();
+    
+    printf("Enter course: ");
+    fgets(course, sizeof(course), stdin);
+    
+    fprintf(file, "Student %d\n", i);
+    fprintf(file, "Name: %s", name);
+    fprintf(file, "Age: %d\n", age);
+    fprintf(file, "Course: %s", course);
+    fprintf(file, "\n");
+    
+}
+    fclose(file);
+    
+    printf("\nStudent database successfully saved to file. \n");
+    printf("\n\nReading student database: \n\n");
+
+    
+    file = fopen("student_records.txt", "r");
+    if (file == NULL){
+        printf("Error! Failed to open file.");
+        return 1;
+    }
+    char line[200];
+    while(fgets(line, 200, file)){
+        printf("%s", line);
+    }
+    
+    fclose(file);
+    return 0;
+}
