@@ -37,6 +37,7 @@ int main(){
     fprintf(file, "Age: %d\n", age);
     fprintf(file, "Course: %s", course);
     fprintf(file, "\n");
+    fprintf(file, "-----------------------------\n\n");
     
 }
     fclose(file);
@@ -58,3 +59,4 @@ int main(){
     fclose(file);
     return 0;
 }
+
